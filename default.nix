@@ -3,7 +3,7 @@ rustPlatform.buildRustPackage {
   pname = "activate-linux";
   version = "0.1.0";
   src = ./.;
-  cargoHash = "sha256-TtTcYEuNPd25j7raC0uengUNb44O7L52IVBWAYxHAuU=";
+  cargoHash = "sha256-E9jYdvjXlOi+PNvpYaLHDfdQsouBY2Pxj0WDdBEvHjc=";
   buildInputs = [ libxkbcommon ];
   nativeBuildInputs = [ pkg-config ];
 

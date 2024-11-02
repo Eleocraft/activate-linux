@@ -1,6 +1,6 @@
 # Activate-Linux
 
-A stupid little joke program for Wayland
+A stupid little joke program for Linux
 
 ![Fullscreen view, showing Activate-Linux on the corner](./resources/sample.png)
 ![Closeup view of Activate-Linux](./resources/closeup.png)
