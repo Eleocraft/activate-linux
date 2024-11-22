@@ -11,5 +11,5 @@ Ensure libxkbcommon and pkg-config are installed, then simply `cargo run`.
 
 The repo can also be ran as a flake:
 ```
-nix run github:Perigord-Kleisli/activate-linux
+nix run github:Kaisia-Estrel/activate-linux
 ```
