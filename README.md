@@ -13,3 +13,5 @@ The repo can also be ran as a flake:
 ```
 nix run github:Kaisia-Estrel/activate-linux
 ```
+
+specify `--header` and `--caption` to change the text of the overlay

@@ -179,7 +179,10 @@ where
     Ok(window)
 }
 
-pub fn x11_main() -> Result<(), Box<dyn std::error::Error>> {
+pub fn x11_main(
+    header: Option<String>,
+    caption: Option<String>,
+) -> Result<(), Box<dyn std::error::Error>> {
     init_tracing();
     let (conn, screen_num) = RustConnection::connect(None)?;
 
@@ -229,10 +232,19 @@ pub fn x11_main() -> Result<(), Box<dyn std::error::Error>> {
     )
     .unwrap();
 
-    wayland::rasterize_string(&font, "Activate Linux", 28.0, 0, data, image_width);
     wayland::rasterize_string(
         &font,
-        "Go to Settings to activate Linux.",
+        header.as_deref().unwrap_or("Activate Linux"),
+        28.0,
+        0,
+        data,
+        image_width,
+    );
+    wayland::rasterize_string(
+        &font,
+        caption
+            .as_deref()
+            .unwrap_or("Go to Settings to activate Linux."),
         16.0,
         32,
         data,

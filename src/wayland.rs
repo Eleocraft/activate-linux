@@ -31,6 +31,8 @@ struct SimpleLayer {
     height: u32,
     layer: LayerSurface,
     font: fontdue::Font,
+    header: Option<String>,
+    caption: Option<String>,
 }
 
 impl CompositorHandler for SimpleLayer {
@@ -198,7 +200,7 @@ impl SimpleLayer {
 
         rasterize_string(
             &self.font,
-            "Activate Linux",
+            self.header.as_deref().unwrap_or("Activate Linux"),
             28.0,
             0,
             canvas,
@@ -207,7 +209,9 @@ impl SimpleLayer {
 
         rasterize_string(
             &self.font,
-            "Go to Settings to activate Linux.",
+            self.caption
+                .as_deref()
+                .unwrap_or("Go to Settings to activate Linux."),
             16.0,
             32,
             canvas,
@@ -242,7 +246,7 @@ impl ProvidesRegistryState for SimpleLayer {
     registry_handlers![OutputState];
 }
 
-pub fn wayland_main() {
+pub fn wayland_main(header: Option<String>, caption: Option<String>) {
     env_logger::init();
 
     let conn = Connection::connect_to_env().unwrap();
@@ -282,6 +286,8 @@ pub fn wayland_main() {
         width,
         height,
         layer,
+        header,
+        caption,
     };
 
     loop {
